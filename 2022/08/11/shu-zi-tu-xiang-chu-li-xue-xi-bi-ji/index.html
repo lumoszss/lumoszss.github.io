@@ -383,6 +383,200 @@
 <li><code>x,y</code>和幅值<code>f(x,y)</code>为有限的离散数值</li>
 <li>像素pixel是数字图像的基本元素</li>
 </ul>
+<p><strong>图像的采样&amp;量化</strong></p>
+<ul>
+<li>取样 (Sampling)</li>
+<li>量化 (Quantization，模数转换)</li>
+</ul>
+<p>图像的数字化过程</p>
+<p><img src="/2022/08/11/shu-zi-tu-xiang-chu-li-xue-xi-bi-ji/图像数字化.jpg" style="zoom:50%;"></p>
+<ul>
+<li>采样间隔越大，所得图像像素数越少，图像空间分辨率低，质量差</li>
+<li>采样间隔越小，所得图像像素数越多，图像空间分辨率高，质量好，但数据量大</li>
+<li>量化等级越多，所得图像层次越丰富，灰度分辨率越高，质量越好，但数据量大；</li>
+<li>量化等级越少，图像层次欠丰富，灰度分辨率低，质量变差，会出现假轮廓现象，但数据量小。</li>
+</ul>
+<p><strong>邻域关系</strong></p>
+<ul>
+<li><p>4邻域、D邻域、8邻域</p>
+<p><img src="/2022/08/11/shu-zi-tu-xiang-chu-li-xue-xi-bi-ji/邻域关系.png" style="zoom:23%;"></p>
+</li>
+</ul>
+<p><strong>邻接性</strong></p>
+<ul>
+<li><p>4 邻接、8邻接、m邻接</p>
+<p><img src="/2022/08/11/shu-zi-tu-xiang-chu-li-xue-xi-bi-ji/邻接关系.png" alt=""></p>
+</li>
+</ul>
+<p><strong>m邻接实质</strong>：当像素间同时存在4 邻接和 8 邻接时，优先采用 4 邻接屏蔽两个和同一像素间存在4 邻接的像素之间的 8 邻接</p>
+<p><strong>连通性</strong></p>
+<ul>
+<li><p>从具有坐标(x,y)的像素p到具有坐标(s,t)的像素q的通路（或曲线）是特定的像素序列，其坐标为</p>
+</li>
+<li><p>$(x_0,y_0),(x_1,y_1),…,(x_n,y_n)$</p>
+</li>
+<li>其中$(x_0,y_0)=(x,y)$并且像素$(x_i,y_i)$和$(x_{i-1},y_{i-1})$(对于$1 \leq i \leq n$)是邻接的。在这种情况下，n是通路的长度。如果$(x_0,y_0)=(x_n,y_n)$，则通路是闭合通路。</li>
+</ul>
+<p>如果要从像素s 到像素 t</p>
+<p><img src="/2022/08/11/shu-zi-tu-xiang-chu-li-xue-xi-bi-ji/连通性.png" style="zoom:25%;"></p>
+<ul>
+<li>在 4 连通 的条件下：s 不能到 t</li>
+<li>在8 连通 的条件下：s 可以到 t</li>
+<li>在 m 连通 的条件下：s 可以到 t</li>
+</ul>
+<p><strong>区域和边界</strong></p>
+<ul>
+<li>区域的定义是建立在连通集的基础上的，令R 是图像中的像素子集</li>
+<li>如果 R 是连通集，则称 R 为一个区域</li>
+<li>如果一个点的 8 邻域都是 1 ，则可以认为这个点是内部的点 而不是边界上的点，可以删除这类点，剩下的就是边界上的点</li>
+<li>根据腐蚀的特性，使用 3*3 的结构元素对图像进行腐蚀，可以得到内部的点，那么再用原图减去腐蚀图 ，就得到了图像的边界</li>
+</ul>
+<p><strong>像素之间的距离</strong></p>
+<ul>
+<li><p>欧式距离：$D_e(p,q) = \sqrt{(x-s)^{2}+(y-t)^{2}}$</p>
+</li>
+<li><p>城市街区距离</p>
+<p><img src="/2022/08/11/shu-zi-tu-xiang-chu-li-xue-xi-bi-ji/城市街区距离.jpg" alt=""></p>
+</li>
+<li><p>棋盘距离</p>
+<p><img src="/2022/08/11/shu-zi-tu-xiang-chu-li-xue-xi-bi-ji/棋盘距离.jpg" alt=""></p>
+<ul>
+<li>围着 P 点的所有元素都是相邻的，它下一步可以走到包围它的八个点的任何一个，也就是横竖和斜向。</li>
+<li>对于可以横竖和斜向走的最短距离，就是横向或竖向的距离的最大值。</li>
+<li>实质上是凑成一个正方形的对角线</li>
+</ul>
+</li>
+</ul>
+<h2 id="图像变换与矫正"><a href="#图像变换与矫正" class="headerlink" title="图像变换与矫正"></a>图像变换与矫正</h2><ul>
+<li><p>由于多种因素的影响，应用中实际获得的画面可能会与想象中有所差异，因此需要进行调整、把画面复原。</p>
+</li>
+<li><p>图像的变换与校正是指用数学建模方法来描述图像位置、大小、形状等已知条件，利用这些条件进行确定模型参数，根据模型对图像进行几何校正。</p>
+</li>
+</ul>
+<h3 id="图像的平移、旋转和缩放"><a href="#图像的平移、旋转和缩放" class="headerlink" title="图像的平移、旋转和缩放"></a>图像的平移、旋转和缩放</h3><p><strong>平移</strong></p>
+<p>齐次坐标 (<strong>Homogenous Coordinate</strong>)</p>
+<p>点$p_{0}(x_{0},y_{0})$平移至$p_{t}(x_{0}+T_{x},y_{0}+T_{y})$</p>
+<script type="math/tex; mode=display">\begin{cases}
+x_{1} = x_{0}+T_{x}
+\\
+y_{1} = y_{0}+T_{y}
+\end{cases}</script><script type="math/tex; mode=display">\begin{bmatrix}
+ x_{1}\\
+ y_{1}\\
+ 1
+\end{bmatrix}=
+\begin{bmatrix}
+  1 & 0 & T_{x}\\
+  0 & 1 & T_{y}\\
+  0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x_{0}\\
+y_{0}\\
+1
+\end{bmatrix}</script><p>记为如下的形式：</p>
+<script type="math/tex; mode=display">p_{t} = T \cdot p_0 = \begin{bmatrix}1 & 0 & x_{t}\\0 & 1 & y_{t}\\ 0 & 0 & 1\end{bmatrix} \cdot p_0</script><p><strong>旋转</strong></p>
+<p><img src="/2022/08/11/shu-zi-tu-xiang-chu-li-xue-xi-bi-ji/旋转.png" style="zoom: 50%;"></p>
+<ul>
+<li><p>$x_0 = r \cos \alpha$</p>
+</li>
+<li><p>$y_0 = r \sin \alpha$</p>
+</li>
+<li>$x = r\cos(\alpha - \gamma) = r\cos{\alpha}\cos{\gamma}+r\sin{\alpha}\sin{\gamma} = x_0\cos{\gamma} + y_0\sin{\gamma}$</li>
+<li>$y = r\sin(\alpha - \gamma) = r\sin{\alpha}\cos{\gamma}-r\cos{\alpha}\sin{\gamma} = y_0\cos{\gamma} - x_0\sin{\gamma}$</li>
+</ul>
+<script type="math/tex; mode=display">p_{r} = R \cdot p_0 = \begin{bmatrix} \cos{\gamma}  & -\sin{\gamma} & 0\\ \sin{\gamma} & \cos{\gamma} & 0\\ 0 & 0 & 1\end{bmatrix} \cdot p_0</script><p><strong>缩放</strong></p>
+<p>缩放前后两点$A_0(x_0, y_0)$和$A_1(x_1, y_1)$之间的关系</p>
+<script type="math/tex; mode=display">\begin{cases}
+x_1 = \alpha x_{0}
+\\
+y_1 = \alpha y_{0}
+\end{cases}</script><p>用矩阵形式可以表示为：</p>
+<script type="math/tex; mode=display">\begin{bmatrix}
+ x_{1}\\
+ y_{1}\\
+ 1
+\end{bmatrix}=
+\begin{bmatrix}
+  \alpha & 0 & 0\\
+  0 & \alpha & 0\\
+  0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x_{0}\\
+y_{0}\\
+1
+\end{bmatrix}</script><script type="math/tex; mode=display">p_{s} = S \cdot p_0 = \begin{bmatrix} S_{x} & 0 & 0\\0 & S_{y} & 0\\ 0 & 0 & 1\end{bmatrix} \cdot p_0</script><h3 id="几何变换"><a href="#几何变换" class="headerlink" title="几何变换"></a>几何变换</h3><p><img src="/2022/08/11/shu-zi-tu-xiang-chu-li-xue-xi-bi-ji/几何变换.jpg" alt=""></p>
+<p><strong>相似变换 (Similarity Transformation)</strong></p>
+<p>相似变换：由一个平面立体图形变换到另一个平面立体图形，在改变的过程中<strong>保持形状不变(大小方向和位置可变)</strong>，任何相似变换都可以分解为<strong>等比例缩放</strong>、 <strong>平移</strong> 、 <strong>旋转</strong>的组合</p>
+<script type="math/tex; mode=display">\begin{bmatrix}
+  1 & 0 & T_{x}\\
+  0 & 1 & T_{y}\\
+  0 & 0 & 1
+\end{bmatrix}\begin{bmatrix} \cos{\gamma}  & -\sin{\gamma} & 0\\ \sin{\gamma} & \cos{\gamma} & 0\\ 0 & 0 & 1\end{bmatrix}\begin{bmatrix} S & 0 & 0\\0 & S & 0\\ 0 & 0 & 1\end{bmatrix}</script><p>可记为</p>
+<script type="math/tex; mode=display">\begin{bmatrix}
+      sR& T\\
+   0 & 1\\
+\end{bmatrix}</script><p><strong>仿射变换 (Affine Transformation)</strong></p>
+<p>仿射变换：由一个平面立体图形变换到另一个平面立体图形，在改变的过程中<strong>保持直线和平行线不变</strong> (平行线映射为平行线），任何仿射变换都可以分解为<strong>缩放</strong> 、 <strong>平移</strong> 、 <strong>旋转</strong>和<strong>切变 (Shearing)</strong>的组合</p>
+<p><img src="/2022/08/11/shu-zi-tu-xiang-chu-li-xue-xi-bi-ji/仿射变换.jpg" style="zoom:80%;"></p>
+<p>仿射变换允许图形任意倾斜，而且允许图形在两个方向上任意伸缩变换</p>
+<p><img src="/2022/08/11/shu-zi-tu-xiang-chu-li-xue-xi-bi-ji/Affine Transformation1.jpg" alt=""></p>
+<p><img src="/2022/08/11/shu-zi-tu-xiang-chu-li-xue-xi-bi-ji/Affine Transformation2.jpg" alt=""></p>
+<p><img src="/2022/08/11/shu-zi-tu-xiang-chu-li-xue-xi-bi-ji/Affine Transformation3.jpg" alt=""></p>
+<p><strong>投影变换 (Projective Transformation)</strong></p>
+<p>又称为单应性变换</p>
+<p>投影变换 ：把空间三维立体投射到投影面上得到二维平面图形的过程。</p>
+<ul>
+<li>中心投影（透视投影）图</li>
+</ul>
+<p><img src="/2022/08/11/shu-zi-tu-xiang-chu-li-xue-xi-bi-ji/投影变换.jpg" style="zoom: 67%;"></p>
+<p>单应性不严谨定义：用无镜头畸变的相机从不同位置拍摄同一平面物体的图像之间存在单应性，可以用投影变换表示。</p>
+<ul>
+<li><p>单应性变换 (投影变换)：不同视角的同一物体，在像素坐标系中的变换。</p>
+<p><img src="/2022/08/11/shu-zi-tu-xiang-chu-li-xue-xi-bi-ji/单应性.jpg" style="zoom:33%;"></p>
+</li>
+</ul>
+<script type="math/tex; mode=display">H_{3 \times 3} = \begin{bmatrix}
+   A_{2 \times 2}& T_{2 \times 1}\\
+   V^{T} & s\\
+\end{bmatrix} = \begin{bmatrix}
+   a_{11} & a_{12} & t_x\\ a_{21} & a_{22} & t_y \\
+   v_{1} & v_{2} & s\\
+\end{bmatrix}</script><ul>
+<li><p>其中$A_{2 \times 2}$代表仿射变换的参数，$T_{2 \times 1}$代表了平移变换的参数</p>
+</li>
+<li><p>$V^{T} = [v_1,v_2]$表示一种“变换后边缘交点”关系</p>
+</li>
+<li><p>$s$是一个与$V^{T} = [v_1,v_2]$相关的缩放因子</p>
+<script type="math/tex; mode=display">\begin{bmatrix}
+  1 & 0 & 0\\
+  0 & 1 & 0\\
+  v_{1} & v_{2} & s
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y\\
+1
+\end{bmatrix} =\begin{bmatrix}
+ x\\
+ y\\
+ v_{1}x+v_{2}y+s
+\end{bmatrix} \Rightarrow \begin{bmatrix}
+ \frac{x}{v_{1}x+v_{2}y+s}\\
+ \frac{y}{v_{1}x+v_{2}y+s}\\
+\end{bmatrix}</script></li>
+<li><p>单应性矩阵$H$虽然有9个未知数，但是只有8个自由度</p>
+<ul>
+<li>单应性矩阵$H$与$aH$完全相同</li>
+<li>令 $a = 1/s$</li>
+</ul>
+</li>
+<li><p>仿射变换是投影变换的特例</p>
+</li>
+<li><p>单应性在计算机视觉领域是一个非常重要的概念，它在 图像校正、图像拼接、相机位姿估计、视觉 SLAM 等领域有非常重要的作用。</p>
+</li>
+</ul>
 <h2 id="图像增强"><a href="#图像增强" class="headerlink" title="图像增强"></a>图像增强</h2><p>增强的主要目的是对图像进行处理，使结果图像比原始图像更适用于某一<strong>特定</strong>应用。<strong>特定</strong>意味着技术是非常面向问题的</p>
 <p>图像增强方法可以分为两大类：<strong>空域方法</strong>和<strong>频域方法</strong></p>
 <ul>

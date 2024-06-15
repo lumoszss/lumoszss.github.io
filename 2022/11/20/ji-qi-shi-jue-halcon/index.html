@@ -729,7 +729,7 @@ reduce_domain(Image, Circle, ImageReduced)<span aria-hidden="true" class="line-n
 <li><p>也可以使用工具生成一个ROI </p>
 </li>
 </ul>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/ROI生成.jpg" alt=""></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/ROI生成.jpg" style="zoom:70%;"></p>
 <h2 id="几何变换"><a href="#几何变换" class="headerlink" title="几何变换"></a>几何变换</h2><p><strong>图像的平移旋转和缩放</strong></p>
 <div class="table-container">
 <table>
@@ -927,20 +927,20 @@ scale_image (GrayImage, ImageScaled, 0.5, 50)
 dev_display (ImageScaled)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>直方图修正算子</strong></p>
 <p>直方图均衡化：<code>equ_histo_image(GrayImage , ImageEquHisto)</code></p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/直方图均衡化.png" alt=""></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/直方图均衡化.png" style="zoom:70%;"></p>
 <p>直方图规定化是使原图像灰度直方图变成规定形状的直方图 而对图像作修正的增强方法，以满足特定的效果。直方图均衡化处理只是直方图规定化的一个特例。</p>
 <p><img src="/2022/11/20/ji-qi-shi-jue-halcon/直方图规定化.jpg" style="zoom:80%;"></p>
 <h3 id="图像的平滑"><a href="#图像的平滑" class="headerlink" title="图像的平滑"></a>图像的平滑</h3><p><strong>噪声</strong></p>
 <ol>
 <li><p>高斯噪声</p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/高斯噪声.png" alt=""></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/高斯噪声.png" style="zoom:70%;"></p>
 <ul>
 <li><code>gauss_distribution( : : Sigma : Distribution)</code></li>
 <li><code>add_noise_distribution(Image : ImageNoise : Distribution : )</code></li>
 </ul>
 </li>
 <li><p>椒盐噪声</p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/椒盐噪声.png" alt=""></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/椒盐噪声.png" style="zoom:70%;"></p>
 <ul>
 <li><code>sp_distribution( : : PercentSalt, PercentPepper : Distribution)</code></li>
 <li><code>add_noise_distribution(Image : ImageNoise : Distribution : )</code></li>
@@ -973,7 +973,7 @@ dev_display (ImageScaled)<span aria-hidden="true" class="line-numbers-rows"><spa
 <li>图像锐化就是增强图像的边缘或轮廓</li>
 </ul>
 <p>图像细节的灰度变化特性</p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/图像细节的灰度变化特性.jpg" alt=""></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/图像细节的灰度变化特性.jpg" style="zoom:90%;"></p>
 <ul>
 <li>因为边缘和轮廓都位于灰度突变的地方 , 所以锐化算法的实现是基于微分作用。<script type="math/tex; mode=display">
 \bigtriangledown f(x,y)=\begin{bmatrix}  G_x\\  G_y\end{bmatrix}=\begin{bmatrix}  \frac{\partial f}{\partial x} \\  \frac{\partial f}{\partial y} \end{bmatrix} \ (f(x,y)\text{的梯度})\\
@@ -1013,7 +1013,7 @@ A = \begin{bmatrix}  1 & 2 & 1\\
 <p> <img src="/2022/11/20/ji-qi-shi-jue-halcon/sobel算子参数.png" alt=""></p>
 </li>
 <li><p>a和b表示用A和B对一个特定像素进行卷积的结果</p>
-<p> <img src="/2022/11/20/ji-qi-shi-jue-halcon/sobel算子参数2.png" alt=""></p>
+<p> <img src="/2022/11/20/ji-qi-shi-jue-halcon/sobel算子参数2.png" style="zoom:50%;"></p>
 </li>
 </ul>
 <pre class="line-numbers language-Halcon" data-language="Halcon"><code class="language-Halcon">read_image (Image, 'fabrik')
@@ -1035,7 +1035,7 @@ dev_display (Skeleton)<span aria-hidden="true" class="line-numbers-rows"><span><
 <script type="math/tex; mode=display">
 \bigtriangledown ^2f=\frac{\partial^{2}f }{\partial x^2}+\frac{\partial^{2}f }{\partial y^2}=f(x+1,y)+f(x-1,y)+f(x,y+1)+f(x,y-1)-4f(x,y)</script><ul>
 <li><p>Laplace掩膜</p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/laplace掩膜.png" alt=""></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/laplace掩膜.png" style="zoom:50%;"></p>
 </li>
 <li><p>把原图像和拉普拉斯图像叠加在一起的简单方法可以保护拉普拉斯锐化处理的效果，同时又能复原背景信息。</p>
 <script type="math/tex; mode=display">
@@ -2004,9 +2004,64 @@ min_max_gray (Rectangle2, Image, 5, Min2, Max2, Range2)<span aria-hidden="true" 
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/11/20/ji-qi-shi-jue-halcon/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Halcon机器视觉">
+                        
+                        <span class="card-title">Halcon机器视觉</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" class="post-category">
+                                    图像处理
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">
+                        <span class="chip bg-color">机器视觉</span>
+                    </a>
+                    
+                    <a href="/tags/Halcon/">
+                        <span class="chip bg-color">Halcon</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2022/11/20/ji-qi-shi-jue-ying-jian/">
                     <div class="card-image">
@@ -2024,9 +2079,9 @@ min_max_gray (Rectangle2, Image, 5, Min2, Max2, Range2)<span aria-hidden="true" 
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-11-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -2048,59 +2103,6 @@ min_max_gray (Rectangle2, Image, 5, Min2, Max2, Range2)<span aria-hidden="true" 
                     
                     <a href="/tags/%E7%9B%B8%E6%9C%BA%E3%80%81%E9%95%9C%E5%A4%B4%E3%80%81%E5%85%89%E6%BA%90/">
                         <span class="chip bg-color">相机、镜头、光源</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/08/11/dong-tai-gui-hua-xue-xi/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="动态规划学习">
-                        
-                        <span class="card-title">动态规划学习</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-11
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    算法学习
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                        <span class="chip bg-color">动态规划</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
                     </a>
                     
                 </div>

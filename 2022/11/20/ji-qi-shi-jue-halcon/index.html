@@ -729,7 +729,7 @@ reduce_domain(Image, Circle, ImageReduced)<span aria-hidden="true" class="line-n
 <li><p>也可以使用工具生成一个ROI </p>
 </li>
 </ul>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/ROI生成.jpg" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/ROI生成.jpg" alt=""></p>
 <h2 id="几何变换"><a href="#几何变换" class="headerlink" title="几何变换"></a>几何变换</h2><p><strong>图像的平移旋转和缩放</strong></p>
 <div class="table-container">
 <table>
@@ -817,10 +817,10 @@ affine_trans_image (ImageAffineTrans1, ImageAffineTrans2, HomMat2DScale, 'consta
 dev_display (ImageAffineTrans2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><p><code>hom_mat2d_rotate</code>参数</p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/仿射变换_旋转算子.png" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/仿射变换_旋转算子.png" alt=""></p>
 </li>
 <li><p><code>hom_mat2d_scale</code>换参数</p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/仿射变换_缩放算子.png" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/仿射变换_缩放算子.png" alt=""></p>
 </li>
 </ul>
 <p>点$(P_x,P_y)$是转换的固定点，也就是说，这个点在进行转换时保持不变。首先在输入的变换矩阵中加入一个平移，将固定点移到全局坐标系的原点上。然后，加入变换，最后加入一个平移，将固定点移回其原始位置。</p>
@@ -927,20 +927,20 @@ scale_image (GrayImage, ImageScaled, 0.5, 50)
 dev_display (ImageScaled)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>直方图修正算子</strong></p>
 <p>直方图均衡化：<code>equ_histo_image(GrayImage , ImageEquHisto)</code></p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/直方图均衡化.png" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/直方图均衡化.png" alt=""></p>
 <p>直方图规定化是使原图像灰度直方图变成规定形状的直方图 而对图像作修正的增强方法，以满足特定的效果。直方图均衡化处理只是直方图规定化的一个特例。</p>
 <p><img src="/2022/11/20/ji-qi-shi-jue-halcon/直方图规定化.jpg" style="zoom:80%;"></p>
 <h3 id="图像的平滑"><a href="#图像的平滑" class="headerlink" title="图像的平滑"></a>图像的平滑</h3><p><strong>噪声</strong></p>
 <ol>
 <li><p>高斯噪声</p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/高斯噪声.png" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/高斯噪声.png" alt=""></p>
 <ul>
 <li><code>gauss_distribution( : : Sigma : Distribution)</code></li>
 <li><code>add_noise_distribution(Image : ImageNoise : Distribution : )</code></li>
 </ul>
 </li>
 <li><p>椒盐噪声</p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/椒盐噪声.png" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/椒盐噪声.png" alt=""></p>
 <ul>
 <li><code>sp_distribution( : : PercentSalt, PercentPepper : Distribution)</code></li>
 <li><code>add_noise_distribution(Image : ImageNoise : Distribution : )</code></li>
@@ -973,7 +973,7 @@ dev_display (ImageScaled)<span aria-hidden="true" class="line-numbers-rows"><spa
 <li>图像锐化就是增强图像的边缘或轮廓</li>
 </ul>
 <p>图像细节的灰度变化特性</p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/图像细节的灰度变化特性.jpg" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/图像细节的灰度变化特性.jpg" alt=""></p>
 <ul>
 <li>因为边缘和轮廓都位于灰度突变的地方 , 所以锐化算法的实现是基于微分作用。<script type="math/tex; mode=display">
 \bigtriangledown f(x,y)=\begin{bmatrix}  G_x\\  G_y\end{bmatrix}=\begin{bmatrix}  \frac{\partial f}{\partial x} \\  \frac{\partial f}{\partial y} \end{bmatrix} \ (f(x,y)\text{的梯度})\\
@@ -1010,10 +1010,10 @@ A = \begin{bmatrix}  1 & 2 & 1\\
 0 & 0 & 0 \\ -1 & -2 & -1\end{bmatrix} \ \ \ \ B = \begin{bmatrix}  1 & 0 & -1\\ 
 2 & 0 & -2 \\ 1 & 0 & -1\end{bmatrix}</script><ul>
 <li><p><code>sobel_amp(Image : EdgeAmplitude : FilterType, Size : )</code></p>
-<p> <img src="/2022/11/20/ji-qi-shi-jue-halcon/sobel算子参数.png" alt></p>
+<p> <img src="/2022/11/20/ji-qi-shi-jue-halcon/sobel算子参数.png" alt=""></p>
 </li>
 <li><p>a和b表示用A和B对一个特定像素进行卷积的结果</p>
-<p> <img src="/2022/11/20/ji-qi-shi-jue-halcon/sobel算子参数2.png" alt></p>
+<p> <img src="/2022/11/20/ji-qi-shi-jue-halcon/sobel算子参数2.png" alt=""></p>
 </li>
 </ul>
 <pre class="line-numbers language-Halcon" data-language="Halcon"><code class="language-Halcon">read_image (Image, 'fabrik')
@@ -1035,13 +1035,13 @@ dev_display (Skeleton)<span aria-hidden="true" class="line-numbers-rows"><span><
 <script type="math/tex; mode=display">
 \bigtriangledown ^2f=\frac{\partial^{2}f }{\partial x^2}+\frac{\partial^{2}f }{\partial y^2}=f(x+1,y)+f(x-1,y)+f(x,y+1)+f(x,y-1)-4f(x,y)</script><ul>
 <li><p>Laplace掩膜</p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/laplace掩膜.png" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/laplace掩膜.png" alt=""></p>
 </li>
 <li><p>把原图像和拉普拉斯图像叠加在一起的简单方法可以保护拉普拉斯锐化处理的效果，同时又能复原背景信息。</p>
 <script type="math/tex; mode=display">
 g(x,y)=f(x,y)+\bigtriangledown ^2f(x,y)</script></li>
 <li><p><code>laplace(Image : ImageLaplace : ResultType, MaskSize, FilterMask : )</code></p>
-<p> <img src="/2022/11/20/ji-qi-shi-jue-halcon/laplace算子参数1.png" alt></p>
+<p> <img src="/2022/11/20/ji-qi-shi-jue-halcon/laplace算子参数1.png" alt=""></p>
 <p> <img src="/2022/11/20/ji-qi-shi-jue-halcon/laplace算子参数2.png" style="zoom: 40%;"></p>
 </li>
 </ul>
@@ -1125,7 +1125,7 @@ fft_generic (ImageConvol, ImageFFT1, 'from_freq', 1, 'sqrt', 'dc_center', 'real'
 dev_display (ImageFFT1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>同态滤波增强</strong></p>
 <p>同态滤波是把图像的照明反射模型作为频域处理的基础，将<em>亮度范围压缩</em>和<em>对比度增强</em>的频域方法。</p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/同态滤波.jpg" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/同态滤波.jpg" alt=""></p>
 <p>同态滤波是改善图像照度不均的一种方法，以便后续进行二值化处理。</p>
 <h2 id="图像分割"><a href="#图像分割" class="headerlink" title="图像分割"></a>图像分割</h2><h3 id="阈值分割"><a href="#阈值分割" class="headerlink" title="阈值分割"></a>阈值分割</h3><p>阈值分割法是一种基于区域的图像分割技术，它不仅可以极大的压缩数据量 ，而且也大大 简化了分析和处理步骤。<br>阈值分割法是一种传统的最常用的图像分割方法，特别适用于目标和背景占据不同灰度级范围的图像。</p>
 <p>图像的阈值分割是一种按图像像素灰度幅度进行分割的方法，把图像的灰度分成不同的等级，然后用设置灰度门限（阈值）的方法确定有意义的区域或要分割物体的边界。阈值分割操作被定义为：</p>
@@ -1222,7 +1222,7 @@ skeleton (Region, Skeleton)
 dev_display(Skeleton)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>Kirsch算法</strong></p>
 <p>Kirsch算法由$K_0 \sim K_7$八个方向的模板决定，将$K_0 \sim K_7$的模板元素分别与当前像素点的模板区域的像素点相乘，然后选八个值中最大的值作为中央像素的边缘强度。</p>
-<script type="math/tex; mode=display">g(x, y)=\max \left(g_{0}, g_{1}, \cdots, g_{T}\right) \quad g_{i}(x, y)=\sum_{k=-1}^{1} \sum_{l=-1}^{1} K_{i}(k, l) f(x+k, y+l)</script><p><img src="/2022/11/20/ji-qi-shi-jue-halcon/Kirsch.jpg" alt></p>
+<script type="math/tex; mode=display">g(x, y)=\max \left(g_{0}, g_{1}, \cdots, g_{T}\right) \quad g_{i}(x, y)=\sum_{k=-1}^{1} \sum_{l=-1}^{1} K_{i}(k, l) f(x+k, y+l)</script><p><img src="/2022/11/20/ji-qi-shi-jue-halcon/Kirsch.jpg" alt=""></p>
 <pre class="line-numbers language-halcon" data-language="halcon"><code class="language-halcon">read_image(Image,'fabrik')
 kirsch_amp (Image, ImageEdgeAmp)
 * 阈值化操作
@@ -1239,7 +1239,7 @@ f(x, y)=s(x, y)+n(x, y)  \ \ \ \ \ n(x)=a \sin (\omega x) \\
 \frac{\partial n(x)}{\partial x}=a \omega \cos (\omega x) \ \ \ \frac{\partial^{2} n(x)}{\partial x^{2}}=-a \omega^{2} \sin (\omega x)
 \end{array}</script></li>
 <li><p>高斯 — 拉普拉斯 (LoG : Laplacianof a Gaussian) 边缘检测算子，先采用高斯算子对原图像进行平滑，然后再施以Laplacian 算子，可克服 Laplacian 算子对噪声敏感的缺点，减少噪声的影响。</p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/Log.jpg" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/Log.jpg" alt=""></p>
 </li>
 <li><p>高斯函数的优点</p>
 <ul>
@@ -1372,7 +1372,7 @@ dev_display (Contours)<span aria-hidden="true" class="line-numbers-rows"><span><
 <ul>
 <li><code>edges_sub_pix (Image:Edges:Filter, Alpha, Low,High:)</code></li>
 </ul>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/亚像素边缘提取.jpg" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/亚像素边缘提取.jpg" alt=""></p>
 <h3 id="区域分割"><a href="#区域分割" class="headerlink" title="区域分割"></a>区域分割</h3><p>将具有相同属性的像素归为同一区域</p>
 <p>传统的区域分割方法</p>
 <ul>
@@ -1432,7 +1432,7 @@ connection (RegionsMean, ConnectedRegions)<span aria-hidden="true" class="line-n
 </li>
 <li>当无法进一步聚合时，终止算法。</li>
 </ol>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/四叉树.png" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/四叉树.png" alt=""></p>
 <p>利用四叉树进行图像分割</p>
 <ul>
 <li>在图像四叉树分割时，需要用到图像区域内和区域间的均一性</li>
@@ -1460,7 +1460,7 @@ connection (RegionsMean, ConnectedRegions)<span aria-hidden="true" class="line-n
 <p>直线的极坐标表示</p>
 <ul>
 <li><p>$\rho = x\cos\theta + y\sin\theta$</p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/hough极坐标系.png" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/hough极坐标系.png" alt=""></p>
 </li>
 </ul>
 <p><img src="/2022/11/20/ji-qi-shi-jue-halcon/hough.png" style="zoom:50%;"></p>
@@ -1481,7 +1481,7 @@ connection (RegionsMean, ConnectedRegions)<span aria-hidden="true" class="line-n
 <li>根据$ r $和$ θ $的值，在相应的数组元素上加$ 1$;</li>
 <li>所有目标点处理完毕后，找出累加数组中最大元素值，即为直线模型参数$(r^<em>,θ^</em>)$</li>
 </ul>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/hough直线检测算法.png" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/hough直线检测算法.png" alt=""></p>
 <p><strong>Halcon算子</strong></p>
 <p><code>hough_lines_dir(ImageDir : HoughImage, Lines : DirectionUncertainty, AngleResolution, Smoothing, FilterSize, Threshold, AngleGap, DistGap, GenLines : Angle, Dist)</code></p>
 <ul>
@@ -1543,7 +1543,7 @@ dev_display (Lines)<span aria-hidden="true" class="line-numbers-rows"><span></sp
 </li>
 </ul>
 <p>算法：</p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/hough圆3.png" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/hough圆3.png" alt=""></p>
 <script type="math/tex; mode=display">
 \begin{array}{l}
 a=x_{i}-r \cos \theta_{i} \quad r=\frac{x_{i}-a}{\cos \theta_{i}} \\
@@ -1584,7 +1584,7 @@ b=a \tan \theta_{i}-x_{i} \tan \theta_{i}+y_{i}
 <li><strong>盆地的其它位置点</strong>，该位置滴的水滴会汇聚到局部最小点。</li>
 <li><strong>盆地的边缘点</strong>，是该盆地和其它盆地交接点，在该点滴一滴水，会等概率的流向任何一个盆地。</li>
 </ol>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/分水岭.png" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/分水岭.png" alt=""></p>
 <p>分水岭算法的整个过程：</p>
 <ol>
 <li>把梯度图像中的所有像素按照灰度值进行分类，并设定一个测地距离 (Geodesic Distance)阈值。</li>
@@ -1612,7 +1612,7 @@ b=a \tan \theta_{i}-x_{i} \tan \theta_{i}+y_{i}
 <li><p>阈值化提取分水岭盆地区域算子如下：<br><code>watersheds_threshold(Image : Basins : Threshold : )</code></p>
 </li>
 </ol>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/watersheds_threshold.png" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/watersheds_threshold.png" alt=""></p>
 <pre class="line-numbers language-halcon" data-language="halcon"><code class="language-halcon">read_image (Br2, 'particle')
 *对单通道图像进行高斯平滑处理，去除噪声
 gauss_filter (Br2, ImageGauss, 9)
@@ -1705,7 +1705,7 @@ disp_message (WindowHandle, 'Size of enclosed area (holes): ' + Area + ' pixel',
 <p><img src="/2022/11/20/ji-qi-shi-jue-halcon/区域特征.png" style="zoom:50%;"></p>
 <p>根据特征值选择区域</p>
 <p><code>Select_shape(Regions: SelectedRegions: Features, Operation, Min, Max: )</code></p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/select_shape.png" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/select_shape.png" alt=""></p>
 <pre class="line-numbers language-halcon" data-language="halcon"><code class="language-halcon">* 读取图像
 read_image (Image, 'monkey')
 threshold (Image, Region, 128, 255)
@@ -1718,7 +1718,7 @@ select_shape (ConnectedRegions, SelectedRegions,['area','anisometry'], 'and', [5
 dev_display (SelectedRegions)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>根据灰度特征值选择区域 select_gray</strong></p>
 <p><code>select_gray(Regions, Image : SelectedRegions : Features, Operation, Min, Max : )</code></p>
-<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/select_gray.png" alt></p>
+<p><img src="/2022/11/20/ji-qi-shi-jue-halcon/select_gray.png" alt=""></p>
 <p><strong>根据特征值创建区域</strong></p>
 <div class="table-container">
 <table>
